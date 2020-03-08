@@ -12,6 +12,8 @@ spring:
           username: ${github.username}
           password: ${github.password}
           cloneOnStart: true
+  profiles:
+    active: native
           
 github:
   username: garyrosebk@gmail.com
