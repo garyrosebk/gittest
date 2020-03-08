@@ -1,1 +1,18 @@
-
+server:  
+  port: ${PORT:8889}
+    
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/garyrosebk/gittest.git
+          username: ${github.username}
+          password: ${github.password}
+          cloneOnStart: true
+          
+github:
+  username: garyrosebk@gmail.com
+  password: rmfodkfdkTek45^^
