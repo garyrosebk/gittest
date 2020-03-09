@@ -1,6 +1,3 @@
- 
-spring:
-  profiles: peer1
 eureka:
   instance:
     hostname: localhost

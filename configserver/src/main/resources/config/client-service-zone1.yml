@@ -1,5 +1,5 @@
 spring:
-  profile: zone1
+  profiles: zone1
   eureka:
   instance:
     metadataMap:
