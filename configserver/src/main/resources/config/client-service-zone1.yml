@@ -1,11 +1,14 @@
-spring:
-  profiles: zone1
-  eureka:
+eureka:
   instance:
+    lease-renewal-interval-in-seconds: 20
     metadataMap:
       zone: zone1
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-server:  
-  port: 8081
+      preferSameZoneEureka: true
+    registryFetchIntervalSeconds: 10
+    registerWithEureka: true
+    fetchRegistry: true
+    registry-fetch-interval-seconds: 3
+    disable-delta: true
