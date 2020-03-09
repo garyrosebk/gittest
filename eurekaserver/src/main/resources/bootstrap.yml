@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: zone1
   application:
     name: discovery-service
   cloud:
