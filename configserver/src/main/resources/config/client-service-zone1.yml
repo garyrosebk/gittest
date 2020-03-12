@@ -1,6 +1,6 @@
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 20
+    lease-renewal-interval-in-seconds: 30
     metadataMap:
       zone: zone1
   client:
