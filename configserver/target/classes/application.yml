@@ -3,23 +3,26 @@ server:
 
 spring:
   profiles:
-    active: native
+    active: vault
   application:
     name: config-server
   cloud:    config:      server:
-        git: 
-          uri: "https://github.com/garyrosebk/gittest/tree/master/configserver/src/main/resources/config"
-          clone-on-start: true
-eureka:
-  instance:
-    metadataMap:
-      zone: zone1
-    lease-renewal-interval-in-seconds: 20
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/     
-    registryFetchIntervalSeconds: 10
-    registerWithEureka: true
-    fetchRegistry: true
-    registry-fetch-interval-seconds: 3
-    disable-delta: true
+#        git: 
+#          uri: https://github.com/garyrosebk/gittest/tree/master/configserver/src/main/resources/config.git
+#          clone-on-start: true
+         vault:
+           host: 192.168.99.100
+           port: 8200
+#eureka:
+#  instance:
+#    metadataMap:
+#      zone: zone1
+#    lease-renewal-interval-in-seconds: 20
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/     
+#    registryFetchIntervalSeconds: 10
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    registry-fetch-interval-seconds: 3
+#    disable-delta: true

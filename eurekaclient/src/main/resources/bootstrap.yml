@@ -1,9 +1,11 @@
 spring:
   profiles: 
-    active: zone1
+    active: default
   application:
     name: client-service
   cloud:
     config:
-      discovery:
-        service-id: config-server
+#      discovery:
+#        service-id: config-server
+       uri: http://localhost:8888
+       token: aaa
