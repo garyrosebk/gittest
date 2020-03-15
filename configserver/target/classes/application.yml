@@ -6,7 +6,7 @@ spring:
     name: config-server
   cloud:    config:      server:
         git: 
-          uri: https://github.com/garyrosebk/gittest.git
+          uri: https://github.com/garyrosebk/config-repo.git
           clone-on-start: true
           username: ${github.username}
           password: ${github.password}
