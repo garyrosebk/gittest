@@ -10,4 +10,3 @@ spring:
         service-id: config-server
 #       uri: http://localhost:8888
 #       token: client
-
