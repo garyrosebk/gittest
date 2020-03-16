@@ -5,6 +5,9 @@ spring:
   application:
     name: config-server
   cloud:    config:      server:
+        monitor:
+          github:
+            enabled: true
         git: 
           uri: https://github.com/garyrosebk/config-repo.git
           clone-on-start: true
