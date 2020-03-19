@@ -1,0 +1,14 @@
+server:
+  port: ${PORT:8091}
+  
+spring:
+  application:
+    name: account-service
+  profiles: zone1
+eureka:
+  instance:
+    metadata-map:
+      zone: zone1
+  client:
+    service-url:      defaultZone: http://locahost:8761/eureka/
+      preferSameZoneEureka: true

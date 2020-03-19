@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:8761}
+  
+spring:
+  application:
+    name: discovery-service
+  profiles: zone1
+  
+eureka:  client:    register-with-eureka: false
+    fetch-registry: false
+    
+#logging:
+#  path: /tmp/discovery/logs

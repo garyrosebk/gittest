@@ -1,0 +1,19 @@
+server:
+  port: ${PORT:8093}
+  
+spring:
+  application:
+    name: product-service
+  profiles: zone1
+eureka:
+  instance:
+    metadataMap:
+      zone: zone1
+  client:
+    serviceUrl: 
+      defaultZone: http://locahost:8761/eureka/
+      preferSameZoneEureka: true
+      
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG

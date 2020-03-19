@@ -21,7 +21,7 @@ public class OrderApplication {
 		return new RestTemplate();
 	}
 	
-	public static void mane(String[] args) {
+	public static void main(String[] args) {
 		SpringApplication.run(OrderApplication.class, args);
 
 	}
