@@ -7,13 +7,14 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
+import spring.cloud.communication.order.repository.OrderRepository;
+
 @SpringBootApplication
-@RibbonClients({@RibbonClient(name="account-service"),
-				@RibbonClient(name="customer-service"),
-				@RibbonClient(name="product-service"),})
 @EnableDiscoveryClient
+@ComponentScan({"spring.cloud.communication.order.repository"})
 public class OrderApplication {
 	@LoadBalanced
 	@Bean
@@ -25,5 +26,9 @@ public class OrderApplication {
 		SpringApplication.run(OrderApplication.class, args);
 
 	}
-
+	
+	@Bean
+	OrderRepository repository() {
+		return new OrderRepository();
+	}
 }

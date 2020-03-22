@@ -20,12 +20,9 @@ public class Customer {
 	 * @param type
 	 * @param accounts
 	 */
-	public Customer(Long id, String name, CustomerType type, List<Account> accounts) {
-		super();
-		this.id = id;
+	public Customer(String name, CustomerType type) {
 		this.name = name;
 		this.type = type;
-		this.accounts = accounts;
 	}
 
 	public Long getId() {

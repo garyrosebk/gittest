@@ -17,9 +17,7 @@ public class Account {
 	 * @param balance
 	 * @param customerId
 	 */
-	public Account(Long id, String number, int balance, Long customerId) {
-		super();
-		this.id = id;
+	public Account(String number, int balance, Long customerId) {
 		this.number = number;
 		this.balance = balance;
 		this.customerId = customerId;

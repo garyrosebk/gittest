@@ -1,0 +1,4 @@
+spring\cloud\communication\account\AccountApplication.class
+spring\cloud\communication\account\model\Account.class
+spring\cloud\communication\account\controller\AccountController.class
+spring\cloud\communication\account\repository\AccountRepository.class

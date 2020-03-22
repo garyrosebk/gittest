@@ -4,10 +4,16 @@ server:
 spring:
   application:
     name: discovery-service
-  profiles: zone1
+  profiles:
+    active: zone1
   
 eureka:  client:    register-with-eureka: false
     fetch-registry: false
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    hostname: localhost
+    metadataMap:
+      zone: zone1
     
 #logging:
 #  path: /tmp/discovery/logs

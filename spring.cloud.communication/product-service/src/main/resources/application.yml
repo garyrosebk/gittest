@@ -4,14 +4,17 @@ server:
 spring:
   application:
     name: product-service
-  profiles: zone1
+  profiles: 
+    active: zone1
 eureka:
   instance:
+    instance-id: ${spring.application.name}-${server.port}
+    prefer-ip-address: true
     metadataMap:
       zone: zone1
   client:
     serviceUrl: 
-      defaultZone: http://locahost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
       preferSameZoneEureka: true
       
 logging:
