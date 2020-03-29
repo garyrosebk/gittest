@@ -15,6 +15,11 @@ import spring.cloud.communication.order.repository.OrderRepository;
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan({"spring.cloud.communication.order.repository"})
+@RibbonClients({
+	@RibbonClient(name = "account-service"),
+	@RibbonClient(name = "customer-service"),
+	@RibbonClient(name = "product-service")
+})
 public class OrderApplication {
 	@LoadBalanced
 	@Bean

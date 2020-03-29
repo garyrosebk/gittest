@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
+import spring.cloud.communication.customer.config.RibbonConfiguration;
 import spring.cloud.communication.customer.model.Customer;
 import spring.cloud.communication.customer.model.CustomerType;
 import spring.cloud.communication.customer.repository.CustomerRepository;
@@ -15,6 +17,7 @@ import spring.cloud.communication.customer.repository.CustomerRepository;
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan({"spring.cloud.comunication.customer.repository"})
+@RibbonClient(name = "account-service", configuration = RibbonConfiguration.class)
 public class CustomerApplication {
 
 	@LoadBalanced

@@ -7,7 +7,8 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
-
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import spring.cloud.communication.product.model.Product;
 import spring.cloud.communication.product.repository.ProductRepository;
 
@@ -15,6 +16,11 @@ import spring.cloud.communication.product.repository.ProductRepository;
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan({"spring.cloud.communication.product.repository"})
+@RibbonClients({
+	@RibbonClient(name = "account-service"),
+	@RibbonClient(name = "customer-service"),
+	@RibbonClient(name = "product-service")
+})
 public class ProductApplication {
 
 	@LoadBalanced
