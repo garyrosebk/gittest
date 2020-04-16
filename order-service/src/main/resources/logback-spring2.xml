@@ -1,0 +1,69 @@
+<configuration>
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level %msg%n</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/order.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>order.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+			<totalSizeCap>1GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>192.168.99.100:5000</destination>
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<mdc />
+				<context />
+				<logLevel />
+				<loggerName />
+				<pattern>
+					<pattern>
+						{
+						"appName": "order-service"
+						}
+					</pattern>
+				</pattern>
+				<threadName />
+				<message />
+				<logstashMarkers />
+				<stackTrace />
+			</providers>
+		</encoder>
+	</appender>
+	<appender name="AMQP" class="org.springframework.amqp.rabbit.logback.Amqp.appender">
+	<layout>            
+            <pattern><![CDATA[ %d %p %t [%c] - <%m>%n ]]></pattern>        
+            </layout>        
+            <exchangeName>ex_logstash</exchangeName>        
+            <host>192.168.99.100</host>        
+            <port>5672</port>        
+            <username>guest</username>        
+                    
+            <password>guest</password><exchangeType>queue</exchangeType>        
+            <applicationId>order-service</applicationId>        
+            <routingKeyPattern>order-service</routingKeyPattern>        
+            <generateId>true</generateId>        
+            <charset>UTF-8</charset>        
+            <durable>false</durable>        
+            <deliveryMode>NON_PERSISTENT</deliveryMode>    
+    </appender>    
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STASH" />
+		<appender-ref ref="AMQP" />
+	</root>
+</configuration>
