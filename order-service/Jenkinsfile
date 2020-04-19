@@ -1,7 +1,7 @@
 node('dind-node-1') {
  withMaven(maven:'M3') {
   stage('Checkout') {
-   git url: 'https://github.com/piomin/sample-spring-cloud-comm.git', credentialsId: 'github-piomin',   branch: 'feign_with_discovery'
+   git url: 'https://github.com/garyrosebk/gittest.git', credentialsId: 'github-piomin',   branch: 'feign_with_discovery'
   }
 
   stage('Build') {
@@ -16,7 +16,7 @@ node('dind-node-1') {
 
   stage('Image') {
    dir ('order-service') {
-    def app = docker.build "piomin/order-service:${env.version}"
+    def app = docker.build "garyrosebk/order-service:${env.version}"
     //app.push()
    }
   }
