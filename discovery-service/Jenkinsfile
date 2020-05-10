@@ -22,7 +22,7 @@ node('dind-node-1') {
   }
 
   stage ('Run') {
-   docker.image("piomin/discovery-service:${env.version}").run('-p 8761:8761 -m 256M -d --name discovery --network sample-spring-cloud-network')
+   docker.image("garyrosebk/discovery-service:${env.version}").run('-p 8761:8761 -m 256M -d --name discovery --network sample-spring-cloud-network')
   }
 
  }
